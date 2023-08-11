@@ -1,0 +1,54 @@
+Versão do VS Code : 1.19.4
+
+// ========>>>>>>>>> pacote enderecos:
+
+package enderecos  //===========>>>>>>>> aqui já fica sublinhado com erro
+
+import "strings"
+
+// tipo de endereço
+func TipoDeEndereco(endereco string) string {
+	tiposValidos := []string{"Rua", "Avenida", "Estrada", "Rodovia"}
+
+	enderecoEmLetraMinuscula := strings.ToLower(endereco)                        //ToLower transforma em letra minuscula
+	primeiraPalavraDoEndereco := strings.Split(enderecoEmLetraMinuscula, " ")[0] //Split substitui o espaço por outra coisa
+
+	enderecoTemUmTipoValido := false
+	for _, tipo := range tiposValidos {
+		if tipo == primeiraPalavraDoEndereco {
+			enderecoTemUmTipoValido = true
+		}
+	}
+
+	if enderecoTemUmTipoValido {
+		return primeiraPalavraDoEndereco
+	}
+
+	return "Tipo inválido"
+
+	// RUA DOS BOBOS
+	// ["RUA", "DOS", "BOBOS"]
+}
+
+
+//========>>>>>>>>>pacote introducao
+
+package  main // ==========>>>>>>>>>>aqui já fica sublinhado com erro
+
+import (
+	"fmt"
+)
+
+func main() {
+	TipoEndereco := enderecos.TipoDeEndereco("Avenida Paulista")
+
+	fmt.Println(TipoEndereco)
+
+}
+
+
+//========>>>>>>>>> dentro do go mod
+
+module introducao-testes ==========>>>>>>>>>>aqui já fica sublinhado com erro
+
+go 1.19
